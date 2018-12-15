@@ -5,6 +5,8 @@
  */
 package proyecto_lab;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Carlos Nuila
@@ -17,12 +19,16 @@ public class Torre extends Pieza {
 
     @Override
     public boolean movimiento() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return true;
     }
 
     @Override
     public void setImagen(int jugador) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         if (jugador == 1) {
+            imagen = new ImageIcon(getClass().getResource("/Imagenes/torreBB.png"));
+        } else {
+            imagen = new ImageIcon(getClass().getResource("/Imagenes/torreNN.png"));
+        }
     }
     
 }
