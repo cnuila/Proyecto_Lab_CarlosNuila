@@ -30,28 +30,14 @@ public class Interfaz extends javax.swing.JFrame {
     Pieza alfil1 = new Alfil(1);
     Pieza alfil2 = new Alfil(2);
 
-    Pieza listaPiezas[][] = new Pieza[2][6];
-
     JButton posActual = new JButton();
     JButton posDestino = new JButton();
 
-    int turno;
+    int turno = 1;
+    int flag = 0;
 
     public Interfaz() {
         initComponents();
-        listaPiezas[0][0] = peon1;
-        listaPiezas[0][2] = torre1;
-        listaPiezas[0][4] = caballo1;
-        listaPiezas[0][1] = rey1;
-        listaPiezas[0][3] = reina1;
-        listaPiezas[0][5] = alfil1;
-
-        listaPiezas[1][0] = peon2;
-        listaPiezas[1][2] = torre2;
-        listaPiezas[1][4] = caballo2;
-        listaPiezas[1][1] = rey2;
-        listaPiezas[1][3] = reina2;
-        listaPiezas[1][5] = alfil2;
 
         tablero[0][0] = jb_00;
         tablero[0][1] = jb_01;
@@ -118,7 +104,7 @@ public class Interfaz extends javax.swing.JFrame {
         tablero[7][6] = jb_76;
         tablero[7][7] = jb_77;
         tableroDefecto(0, 0);
-
+        jl_turno.setText("BLANCO");
     }
 
     /**
@@ -195,6 +181,8 @@ public class Interfaz extends javax.swing.JFrame {
         jb_57 = new javax.swing.JButton();
         jb_77 = new javax.swing.JButton();
         jb_75 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jl_turno = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -203,201 +191,523 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jb_00.setBackground(new java.awt.Color(255, 244, 163));
-        jb_00.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jb_00ActionPerformed(evt);
+        jb_00.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
             }
         });
         jPanel1.add(jb_00, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 31, 70, 70));
 
         jb_01.setBackground(new java.awt.Color(134, 55, 13));
+        jb_01.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_01, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 31, 70, 70));
 
         jb_10.setBackground(new java.awt.Color(134, 55, 13));
+        jb_10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_10, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 95, 70, 70));
 
         jb_11.setBackground(new java.awt.Color(255, 244, 163));
+        jb_11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_11, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 95, 70, 70));
 
         jb_20.setBackground(new java.awt.Color(255, 244, 163));
+        jb_20.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_20, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 159, 70, 70));
 
         jb_21.setBackground(new java.awt.Color(134, 55, 13));
+        jb_21.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_21, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 159, 70, 70));
 
         jb_30.setBackground(new java.awt.Color(134, 55, 13));
+        jb_30.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_30, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 223, 70, 70));
 
         jb_31.setBackground(new java.awt.Color(255, 244, 163));
+        jb_31.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_31, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 223, 70, 70));
 
         jb_12.setBackground(new java.awt.Color(134, 55, 13));
+        jb_12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_12, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 95, 70, 70));
 
         jb_02.setBackground(new java.awt.Color(255, 244, 163));
+        jb_02.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_02, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 31, 70, 70));
 
         jb_13.setBackground(new java.awt.Color(255, 244, 163));
+        jb_13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_13, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 95, 70, 70));
 
         jb_03.setBackground(new java.awt.Color(134, 55, 13));
+        jb_03.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_03, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 31, 70, 70));
 
         jb_32.setBackground(new java.awt.Color(134, 55, 13));
+        jb_32.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_32, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 223, 70, 70));
 
         jb_22.setBackground(new java.awt.Color(255, 244, 163));
+        jb_22.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_22, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 159, 70, 70));
 
         jb_33.setBackground(new java.awt.Color(255, 244, 163));
+        jb_33.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_33, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 223, 70, 70));
 
         jb_23.setBackground(new java.awt.Color(134, 55, 13));
+        jb_23.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_23, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 159, 70, 70));
 
         jb_27.setBackground(new java.awt.Color(134, 55, 13));
+        jb_27.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_27, new org.netbeans.lib.awtextra.AbsoluteConstraints(516, 159, 70, 70));
 
         jb_37.setBackground(new java.awt.Color(255, 244, 163));
+        jb_37.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_37, new org.netbeans.lib.awtextra.AbsoluteConstraints(516, 223, 70, 70));
 
         jb_36.setBackground(new java.awt.Color(134, 55, 13));
+        jb_36.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_36, new org.netbeans.lib.awtextra.AbsoluteConstraints(449, 223, 70, 70));
 
         jb_26.setBackground(new java.awt.Color(255, 244, 163));
+        jb_26.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_26, new org.netbeans.lib.awtextra.AbsoluteConstraints(449, 159, 70, 70));
 
         jb_04.setBackground(new java.awt.Color(255, 244, 163));
+        jb_04.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_04, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 31, 70, 70));
 
         jb_05.setBackground(new java.awt.Color(134, 55, 13));
+        jb_05.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_05, new org.netbeans.lib.awtextra.AbsoluteConstraints(378, 31, 70, 70));
 
         jb_06.setBackground(new java.awt.Color(255, 244, 163));
+        jb_06.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_06, new org.netbeans.lib.awtextra.AbsoluteConstraints(449, 31, 70, 70));
 
         jb_07.setBackground(new java.awt.Color(134, 55, 13));
+        jb_07.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_07, new org.netbeans.lib.awtextra.AbsoluteConstraints(516, 31, 70, 70));
 
         jb_17.setBackground(new java.awt.Color(255, 244, 163));
+        jb_17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_17, new org.netbeans.lib.awtextra.AbsoluteConstraints(516, 95, 70, 70));
 
         jb_16.setBackground(new java.awt.Color(134, 55, 13));
+        jb_16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_16, new org.netbeans.lib.awtextra.AbsoluteConstraints(449, 95, 70, 70));
 
         jb_15.setBackground(new java.awt.Color(255, 244, 163));
+        jb_15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_15, new org.netbeans.lib.awtextra.AbsoluteConstraints(378, 95, 70, 70));
 
         jb_14.setBackground(new java.awt.Color(134, 55, 13));
+        jb_14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_14, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 95, 70, 70));
 
         jb_24.setBackground(new java.awt.Color(255, 244, 163));
+        jb_24.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_24, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 159, 70, 70));
 
         jb_34.setBackground(new java.awt.Color(134, 55, 13));
+        jb_34.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_34, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 223, 70, 70));
 
         jb_35.setBackground(new java.awt.Color(255, 244, 163));
+        jb_35.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_35, new org.netbeans.lib.awtextra.AbsoluteConstraints(378, 223, 70, 70));
 
         jb_25.setBackground(new java.awt.Color(134, 55, 13));
+        jb_25.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_25, new org.netbeans.lib.awtextra.AbsoluteConstraints(378, 159, 70, 70));
 
         jb_70.setBackground(new java.awt.Color(134, 55, 13));
+        jb_70.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_70, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 479, 70, 70));
 
         jb_43.setBackground(new java.awt.Color(134, 55, 13));
+        jb_43.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_43, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 287, 70, 70));
 
         jb_52.setBackground(new java.awt.Color(134, 55, 13));
+        jb_52.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_52, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 351, 70, 70));
 
         jb_71.setBackground(new java.awt.Color(255, 244, 163));
+        jb_71.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_71, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 479, 70, 70));
 
         jb_40.setBackground(new java.awt.Color(255, 244, 163));
+        jb_40.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_40, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 287, 70, 70));
 
         jb_63.setBackground(new java.awt.Color(134, 55, 13));
+        jb_63.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_63, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 415, 70, 70));
 
         jb_72.setBackground(new java.awt.Color(134, 55, 13));
+        jb_72.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_72, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 479, 70, 70));
 
         jb_60.setBackground(new java.awt.Color(255, 244, 163));
+        jb_60.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_60, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 415, 70, 70));
 
         jb_53.setBackground(new java.awt.Color(255, 244, 163));
+        jb_53.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_53, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 351, 70, 70));
 
         jb_62.setBackground(new java.awt.Color(255, 244, 163));
+        jb_62.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_62, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 415, 70, 70));
 
         jb_51.setBackground(new java.awt.Color(255, 244, 163));
+        jb_51.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_51, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 351, 70, 70));
 
         jb_61.setBackground(new java.awt.Color(134, 55, 13));
+        jb_61.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_61, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 415, 70, 70));
 
         jb_42.setBackground(new java.awt.Color(255, 244, 163));
+        jb_42.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_42, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 287, 70, 70));
 
         jb_50.setBackground(new java.awt.Color(134, 55, 13));
+        jb_50.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_50, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 351, 70, 70));
 
         jb_73.setBackground(new java.awt.Color(255, 244, 163));
+        jb_73.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_73, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 479, 70, 70));
 
         jb_41.setBackground(new java.awt.Color(134, 55, 13));
+        jb_41.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_41, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 287, 70, 70));
 
         jb_55.setBackground(new java.awt.Color(255, 244, 163));
+        jb_55.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_55, new org.netbeans.lib.awtextra.AbsoluteConstraints(378, 351, 70, 70));
 
         jb_64.setBackground(new java.awt.Color(255, 244, 163));
+        jb_64.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_64, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 415, 70, 70));
 
         jb_54.setBackground(new java.awt.Color(134, 55, 13));
+        jb_54.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_54, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 351, 70, 70));
 
         jb_47.setBackground(new java.awt.Color(134, 55, 13));
+        jb_47.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_47, new org.netbeans.lib.awtextra.AbsoluteConstraints(516, 287, 70, 70));
 
         jb_76.setBackground(new java.awt.Color(134, 55, 13));
+        jb_76.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_76, new org.netbeans.lib.awtextra.AbsoluteConstraints(449, 479, 70, 70));
 
         jb_44.setBackground(new java.awt.Color(255, 244, 163));
+        jb_44.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_44, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 287, 70, 70));
 
         jb_65.setBackground(new java.awt.Color(134, 55, 13));
+        jb_65.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_65, new org.netbeans.lib.awtextra.AbsoluteConstraints(378, 415, 70, 70));
 
         jb_46.setBackground(new java.awt.Color(255, 244, 163));
+        jb_46.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_46, new org.netbeans.lib.awtextra.AbsoluteConstraints(449, 287, 70, 70));
 
         jb_66.setBackground(new java.awt.Color(255, 244, 163));
+        jb_66.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_66, new org.netbeans.lib.awtextra.AbsoluteConstraints(449, 415, 70, 70));
 
         jb_45.setBackground(new java.awt.Color(134, 55, 13));
+        jb_45.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_45, new org.netbeans.lib.awtextra.AbsoluteConstraints(378, 287, 70, 70));
 
         jb_74.setBackground(new java.awt.Color(134, 55, 13));
+        jb_74.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_74, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 479, 70, 70));
 
         jb_56.setBackground(new java.awt.Color(134, 55, 13));
+        jb_56.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_56, new org.netbeans.lib.awtextra.AbsoluteConstraints(449, 351, 70, 70));
 
         jb_67.setBackground(new java.awt.Color(134, 55, 13));
+        jb_67.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_67, new org.netbeans.lib.awtextra.AbsoluteConstraints(516, 415, 70, 70));
 
         jb_57.setBackground(new java.awt.Color(255, 244, 163));
+        jb_57.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_57, new org.netbeans.lib.awtextra.AbsoluteConstraints(516, 351, 70, 70));
 
         jb_77.setBackground(new java.awt.Color(255, 244, 163));
+        jb_77.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_77, new org.netbeans.lib.awtextra.AbsoluteConstraints(516, 479, 70, 70));
 
         jb_75.setBackground(new java.awt.Color(255, 244, 163));
+        jb_75.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mover(evt);
+            }
+        });
         jPanel1.add(jb_75, new org.netbeans.lib.awtextra.AbsoluteConstraints(378, 479, 70, 70));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setText("TURNO:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 220, -1, -1));
+
+        jl_turno.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jPanel1.add(jl_turno, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 270, 70, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -413,9 +723,29 @@ public class Interfaz extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jb_00ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_00ActionPerformed
+    private void mover(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mover
         // TODO add your handling code here:
-    }//GEN-LAST:event_jb_00ActionPerformed
+        if (((JButton) evt.getComponent()).getIcon() != null && tipoPieza((JButton) evt.getComponent()).getJugador() == turno && flag == 0) {
+            posActual = (JButton) evt.getComponent();
+            flag++;
+        }
+        if (((JButton)evt.getComponent()) != posActual && flag > 0 && (((JButton) evt.getComponent()).getIcon() == null || 
+                tipoPieza(posActual).getJugador() != tipoPieza((JButton) evt.getComponent()).getJugador())){
+            posDestino = (JButton) evt.getComponent();
+            flag = 0;
+            if (((JButton) evt.getComponent()).getIcon() == null){
+                posDestino.setIcon(posActual.getIcon());
+                posActual.setIcon(null);
+                if (turno == 1){
+                    jl_turno.setText("NEGRO");
+                    turno = 2;
+                } else {
+                    jl_turno.setText("BLANCO");
+                    turno = 1;
+                }
+            }
+        }
+    }//GEN-LAST:event_mover
 
     /**
      * @param args the command line arguments
@@ -502,7 +832,38 @@ public class Interfaz extends javax.swing.JFrame {
         }
     }
 
+    public Pieza tipoPieza(JButton casilla) {
+        if (casilla.getIcon() == peon1.getImagen()) {
+            return peon1;
+        } else if (casilla.getIcon() == alfil1.getImagen()) {
+            return alfil1;
+        } else if (casilla.getIcon() == alfil2.getImagen()) {
+            return alfil2;
+        } else if (casilla.getIcon() == peon2.getImagen()) {
+            return peon2;
+        } else if (casilla.getIcon() == caballo1.getImagen()) {
+            return caballo1;
+        } else if (casilla.getIcon() == caballo2.getImagen()) {
+            return caballo2;
+        } else if (casilla.getIcon() == torre1.getImagen()) {
+            return torre1;
+        } else if (casilla.getIcon() == torre2.getImagen()) {
+            return torre2;
+        } else if (casilla.getIcon() == rey1.getImagen()) {
+            return rey1;
+        } else if (casilla.getIcon() == rey2.getImagen()) {
+            return rey2;
+        } else if (casilla.getIcon() == reina1.getImagen()) {
+            return reina1;
+        } else if (casilla.getIcon() == reina2.getImagen()) {
+            return reina2;
+        } else {
+            return null;
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jb_00;
     private javax.swing.JButton jb_01;
@@ -568,5 +929,6 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JButton jb_75;
     private javax.swing.JButton jb_76;
     private javax.swing.JButton jb_77;
+    private javax.swing.JLabel jl_turno;
     // End of variables declaration//GEN-END:variables
 }

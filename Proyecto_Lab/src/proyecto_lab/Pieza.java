@@ -24,6 +24,14 @@ public abstract class Pieza {
         setImagen(jugador);
     }
 
+    public int getJugador() {
+        return jugador;
+    }
+
+    public void setJugador(int jugador) {
+        this.jugador = jugador;
+    }
+
     public ImageIcon getImagen() {
         return imagen;
     }
