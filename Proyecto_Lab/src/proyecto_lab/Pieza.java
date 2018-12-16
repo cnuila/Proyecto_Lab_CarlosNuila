@@ -5,7 +5,9 @@
  */
 package proyecto_lab;
 
+import java.util.Arrays;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 
 /**
  *
@@ -35,8 +37,19 @@ public abstract class Pieza {
     public ImageIcon getImagen() {
         return imagen;
     }
+    
+    public int coordenada(String indicador, JButton boton){
+        String coordenadas = boton.getName();
+        int fila = Integer.parseInt(String.valueOf(coordenadas.charAt(0)));
+        int columna = Integer.parseInt(String.valueOf(coordenadas.charAt(2)));
+        if (indicador.equalsIgnoreCase("fila")){
+            return fila;
+        } else{
+            return columna;
+        }
+    }
 
-    public abstract boolean movimiento();
+    public abstract boolean movimiento(JButton posActual, JButton posDestino,String[][] tablero, int jugador);
     public abstract void setImagen(int jugador);
 
 }

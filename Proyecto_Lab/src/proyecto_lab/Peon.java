@@ -6,6 +6,7 @@
 package proyecto_lab;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 
 /**
  *
@@ -18,8 +19,24 @@ public class Peon extends Pieza {
     }
 
     @Override
-    public boolean movimiento() {
-        return true;
+    public boolean movimiento(JButton posActual, JButton posDestino,String[][] tablero, int jugador) {
+        int posActualFila = coordenada("fila", posActual);
+        int posActualColum = coordenada("col", posActual);
+        int posDestinFilas = coordenada("fila", posDestino);
+        int posDestinCol = coordenada("col", posDestino);
+        if (tablero[posDestinFilas][posDestinCol].equals(" ")){
+            if (jugador == 1){
+                return ((posActualColum == posDestinCol) && (posActualFila - 1 == posDestinFilas) || (posActualFila == 6 && posActualFila - 2 == posDestinFilas));
+            } else{
+                return ((posActualColum == posDestinCol) && (posActualFila + 1 == posDestinFilas) || (posActualFila == 1 && posActualFila + 2 == posDestinFilas));
+            }
+        } else{
+            if (jugador == 1){
+                return ((posActualColum - 1 == posDestinCol) && (posActualFila - 1 == posDestinFilas) || (posActualFila + 1 == posDestinFilas));
+            } else {
+                return ((posActualColum + 1 == posDestinCol) && (posActualFila + 1 == posDestinFilas) || (posActualFila - 1 == posDestinFilas));
+            }
+        }
     }
     
     @Override

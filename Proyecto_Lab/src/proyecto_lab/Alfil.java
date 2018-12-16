@@ -6,6 +6,7 @@
 package proyecto_lab;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 
 /**
  *
@@ -18,9 +19,11 @@ public class Alfil extends Pieza {
     }
 
     @Override
-    public boolean movimiento() {
+    public boolean movimiento(JButton posActual, JButton posDestino, String[][] tablero, int jugador) {
         return true;
     }
+
+    
 
     @Override
     public void setImagen(int jugador) {
