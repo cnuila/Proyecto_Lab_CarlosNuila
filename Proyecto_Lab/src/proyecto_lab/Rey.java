@@ -20,10 +20,19 @@ public class Rey extends Pieza {
 
     @Override
     public boolean movimiento(JButton posActual, JButton posDestino, String[][] tablero, int jugador) {
-        return true;
+        int posActualFila = coordenada("fila", posActual);
+        int posActualColum = coordenada("col", posActual);
+        int posDestinFilas = coordenada("fila", posDestino);
+        int posDestinCol = coordenada("col", posDestino);
+        return ((posActualColum + 1 == posDestinCol) && (posActualFila == posDestinFilas)
+                || ((posActualColum == posDestinCol) && (posActualFila + 1 == posDestinFilas))
+                || ((posActualColum - 1 == posDestinCol) && (posActualFila == posDestinFilas))
+                || ((posActualFila - 1 == posDestinFilas) && (posActualColum == posDestinCol))
+                || ((posActualColum + 1 == posDestinCol) && (posActualFila + 1 == posDestinFilas))
+                || ((posActualFila + 1 == posDestinFilas) && (posActualColum - 1 == posDestinCol))
+                || ((posActualFila - 1 == posDestinFilas) && (posActualColum - 1 == posDestinCol))
+                || ((posActualFila - 1 == posDestinFilas) && (posActualColum + 1 == posDestinCol)));
     }
-    
-    
 
     @Override
     public void setImagen(int jugador) {
@@ -33,5 +42,5 @@ public class Rey extends Pieza {
             imagen = new ImageIcon(getClass().getResource("/Imagenes/reyNN.png"));
         }
     }
-    
+
 }

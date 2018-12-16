@@ -20,7 +20,48 @@ public class Torre extends Pieza {
 
     @Override
     public boolean movimiento(JButton posActual, JButton posDestino, String[][] tablero, int jugador) {
-       return true;
+        int posActualFila = coordenada("fila", posActual);
+        int posActualColum = coordenada("col", posActual);
+        int posDestinFilas = coordenada("fila", posDestino);
+        int posDestinCol = coordenada("col", posDestino);
+        int inicio = 0;
+        int fin = 0;
+        int sePuede = 0;
+        if (posActualFila == posDestinFilas){
+            if (posActualColum > posDestinCol){
+                inicio = posActualColum;
+                fin = posDestinCol;
+            } else{
+                fin = posActualColum;
+                inicio = posDestinCol;
+            }
+            for (int i = inicio; i < fin; i++) {
+                if (!tablero[posActualFila][i].equals(" ")){
+                    sePuede = 1;
+                    i = fin;
+                }
+            }
+        }
+        if (posActualColum == posDestinCol){
+            if (posActualFila > posDestinFilas){
+                inicio = posActualFila;
+                fin = posDestinFilas;
+            } else{
+                fin = posActualFila;
+                inicio = posDestinFilas;
+            }
+            for (int i = inicio; i < fin; i++) {
+                if (!tablero[posActualFila][i].equals(" ")){
+                    sePuede = 1;
+                    i = fin;
+                }
+            }
+        }
+        if (sePuede == 0){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     
