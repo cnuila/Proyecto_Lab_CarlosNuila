@@ -50,7 +50,54 @@ public class Reina extends Pieza {
             sePuede = revisarCamino(inicio, fin, tablero, sePuede, posActualColum);
         }
         if (Math.abs(diferenciaColum) == Math.abs(diferenciaFila)){
-            
+            if ((posActualFila - posDestinFilas) > 0 && (posActualColum - posDestinCol) < 0){
+                for (int i = posActualFila; i < posDestinFilas; i++) {
+                    for (int j = posActualColum; j < posDestinCol; j++) {
+                        if (!tablero[i][j].equals(" ")){
+                            sePuede = 1;
+                            j = posDestinCol;
+                            i = posDestinFilas;
+                        }
+                        i++;
+                    }
+                }
+            }
+            if ((posActualFila - posDestinFilas) > 0 && (posActualColum - posDestinCol) > 0){
+                for (int i = posActualFila; i < posDestinFilas; i--) {
+                    for (int j = posActualColum; j < posDestinCol; j--) {
+                        if (!tablero[i][j].equals(" ")){
+                            sePuede = 1;
+                            j = posDestinCol;
+                            i = posDestinFilas;
+                        }
+                        i--;
+                    }
+                }
+            }
+            if ((posActualFila - posDestinFilas) < 0 && (posActualColum - posDestinCol) > 0){
+                for (int i = posDestinFilas; i < posActualFila; i++) {
+                    for (int j = posDestinCol; j < posActualColum; j++) {
+                        if (!tablero[i][j].equals(" ")){
+                            sePuede = 1;
+                            j = posActualColum;
+                            i = posActualFila;
+                        }
+                        i++;
+                    }
+                }
+            }
+            if ((posActualFila - posDestinFilas) < 0 && (posActualColum - posDestinCol) < 0){
+                for (int i = posDestinFilas; i < posActualFila; i++) {
+                    for (int j = posActualColum; j < posDestinCol; j++) {
+                        if (!tablero[i][j].equals(" ")){
+                            sePuede = 1;
+                            j = posDestinCol;
+                            i = posActualFila;
+                        }
+                        i++;
+                    }
+                }
+            }
         }
         if (sePuede == 0) {
             return true;
